@@ -3,7 +3,7 @@
 """
 
 from utils import *
-import random 
+import random
 
 #______________________________________________________________________________
 # Minimax Search
