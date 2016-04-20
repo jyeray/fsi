@@ -1,5 +1,6 @@
 from Game import Game
-from games import *
+from AIMA.games import *
+
 
 class TicTacToe(Game):
     """Play TicTacToe on an h x v board, with Max (first player) playing 'X'.

@@ -1,6 +1,7 @@
-import games
-from heuristic import *
-from ConnectFour import ConnectFour
+from AIMA.games import *
+from Games.ConnectFour import ConnectFour
+
+from Games.heuristic import *
 
 game = ConnectFour()
 state = game.initial
@@ -25,9 +26,7 @@ while True:
         player = 'X'
     else:
         print "Thinking..."
-        #move = games.minimax_decision(state, game)
-        #move = games.alphabeta_full_search(state, game)
-        move = games.alphabeta_search(state, game, eval_fn=horizontalHeuristic)
+        move = alphabeta_search(state, game, eval_fn=horizontalHeuristic)
 
         state = game.make_move(move, state)
         player = 'O'

@@ -8,7 +8,6 @@ def horizontalHeuristic(state):
     for point in state.board:
         if state.board[point] == 'X':
             result += horizontalCount(state, point)
-    print result
     return result
 
 

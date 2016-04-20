@@ -2,8 +2,10 @@
 
 """
 
-from utils import *
 import random
+
+from utils import *
+
 
 #______________________________________________________________________________
 # Minimax Search
