@@ -1,5 +1,6 @@
 from random import randint
 
+
 def randomHeuristic(state):
     return randint(0, 100)
 
@@ -19,21 +20,25 @@ def getHorizontalPoints(moves, point, inrow):
     multiplier = 0
     if inrow == 1:
         return 0
+    if inrow == 4:
+        return float('inf')
     leftpoint = (point[0] - 1, point[1])
     rightpoint = (point[0] + inrow, point[1])
     if leftpoint in moves:
-        multiplier += 20
+        multiplier += 2
     if rightpoint in moves:
-        multiplier += 20
-    return inrow * multiplier
+        multiplier += 2
+    return (inrow * multiplier) ** inrow
 
 
 def horizontalLineHeuristic(line, moves):
     result = 0
     for point in line:
+        inrow = horizontalCount(line, point)
         if line[point] == 'X':
-            inrow = horizontalCount(line, point)
             result += getHorizontalPoints(moves, point, inrow)
+        else:
+            result -= getHorizontalPoints(moves, point, inrow)
     return result
 
 
