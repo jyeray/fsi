@@ -26,7 +26,7 @@ while True:
         player = 'X'
     else:
         print "Thinking..."
-        move = alphabeta_search(state, game, eval_fn=horizontalHeuristic)
+        move = alphabeta_search(state, game, eval_fn=verticalHeuristic)
 
         state = game.make_move(move, state)
         player = 'O'
