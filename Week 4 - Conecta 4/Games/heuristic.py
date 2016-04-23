@@ -7,12 +7,19 @@ def randomHeuristic(state):
 
 def horizontalHeuristic(state):
     result = 0
-    for number in range(1, 7):
-        line = {}
-        for point in state.board:
-            if point[1] == number:
-                line[point] = state.board[point]
-        result += horizontalLineHeuristic(line, state.moves)
+    for line in range(1, 7):
+        colum = 1
+        while colum < 8:
+            point = (colum, line)
+            if point in state.board:
+                inrow = horizontalCount(state.board, point)
+                if state.board[point] == 'X':
+                    result += getHorizontalPoints(state.moves, point, inrow)
+                else:
+                    result -= getHorizontalPoints(state.moves, point, inrow)
+                colum += inrow
+            else:
+                colum += 1
     return result
 
 
@@ -29,17 +36,6 @@ def getHorizontalPoints(moves, point, inrow):
     if rightpoint in moves:
         multiplier += 2
     return (inrow * multiplier) ** inrow
-
-
-def horizontalLineHeuristic(line, moves):
-    result = 0
-    for point in line:
-        inrow = horizontalCount(line, point)
-        if line[point] == 'X':
-            result += getHorizontalPoints(moves, point, inrow)
-        else:
-            result -= getHorizontalPoints(moves, point, inrow)
-    return result
 
 
 def horizontalCount(line, point):
