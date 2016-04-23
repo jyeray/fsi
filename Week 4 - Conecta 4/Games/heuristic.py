@@ -62,7 +62,7 @@ def verticalHeuristic(state):
 
 def verticalLineHeuristic(point, board, moves):
     result = 0
-    while point in board:
+    while point in board and point[1] < 4:
         inrow = verticalCount(board, point)
         if board[point] == 'X':
             result += getVerticalPoints(moves, point, inrow)
