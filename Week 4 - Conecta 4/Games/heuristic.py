@@ -2,6 +2,7 @@ from random import randint
 from HorizontalHeuristic import horizontalHeuristic
 from VerticalHeuristic import verticalHeuristic
 from DiagonalHeuristic import diagonalHeuristic
+from InverseDiagonalHeuristic import inverseDiagonalHeuristic
 
 
 def randomHeuristic(state):
@@ -13,4 +14,5 @@ def combinedHeuristic(state):
     result += horizontalHeuristic(state)
     result += verticalHeuristic(state)
     result += diagonalHeuristic(state)
+    result += inverseDiagonalHeuristic(state)
     return result
