@@ -10,9 +10,6 @@ def randomHeuristic(state):
 
 
 def combinedHeuristic(state):
-    result = 0
-    result += horizontalHeuristic(state)
-    result += verticalHeuristic(state)
-    result += diagonalHeuristic(state)
-    result += inverseDiagonalHeuristic(state)
-    return result
+    return horizontalHeuristic(state) + verticalHeuristic(state) \
+           + diagonalHeuristic(state) + inverseDiagonalHeuristic(state)
+

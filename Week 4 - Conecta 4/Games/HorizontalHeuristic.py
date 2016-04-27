@@ -31,12 +31,12 @@ def getHorizontalPoints(moves, point, inrow):
     return (inrow * multiplier) ** inrow
 
 
-def horizontalCount(line, point):
-    player = line[point]
+def horizontalCount(board, point):
+    player = board[point]
     count = 1
     point = (point[0] + 1, point[1])
-    while point in line:
-        if line[point] == player:
+    while point in board:
+        if board[point] == player:
             count += 1
             point = (point[0] + 1, point[1])
         else:
