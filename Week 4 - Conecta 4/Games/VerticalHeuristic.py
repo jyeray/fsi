@@ -1,17 +1,17 @@
-def verticalHeuristic(state):
+def verticalHeuristic(state, problem_player):
     result = 0
     for colum in range(1, 8):
         point = (colum, 1)
         if point in state.board:
-            result += verticalLineHeuristic(point, state.board, state.moves)
+            result += verticalLineHeuristic(point, state.board, state.moves, problem_player)
     return result
 
 
-def verticalLineHeuristic(point, board, moves):
+def verticalLineHeuristic(point, board, moves, problem_player):
     result = 0
     while point in board and point[1] < 4:
         inrow = verticalCount(board, point)
-        if board[point] == 'X':
+        if board[point] == problem_player:
             result += getVerticalPoints(moves, point, inrow)
         else:
             result -= getVerticalPoints(moves, point, inrow)

@@ -1,4 +1,4 @@
-def horizontalHeuristic(state):
+def horizontalHeuristic(state, problem_player):
     result = 0
     for line in range(1, 7):
         colum = 1
@@ -6,7 +6,7 @@ def horizontalHeuristic(state):
             point = (colum, line)
             if point in state.board:
                 inrow = horizontalCount(state.board, point)
-                if state.board[point] == 'X':
+                if state.board[point] == problem_player:
                     result += getHorizontalPoints(state.moves, point, inrow)
                 else:
                     result -= getHorizontalPoints(state.moves, point, inrow)

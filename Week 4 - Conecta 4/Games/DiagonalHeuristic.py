@@ -1,17 +1,17 @@
-def diagonalHeuristic(state):
+def diagonalHeuristic(state, problem_player):
     initial_points = {(1, 3), (1, 2), (1, 1), (2, 1), (3, 1), (4, 1)}
     result = 0
     for point in initial_points:
-        result += diagonalLineHeuristic(point, state.board, state.moves)
+        result += diagonalLineHeuristic(point, state.board, state.moves, problem_player)
     return result
 
 
-def diagonalLineHeuristic(point, board, moves):
+def diagonalLineHeuristic(point, board, moves, problem_player):
     result = 0
     while point in board or point in moves:
         if point in board:
             inrow = diagonalCount(point, board)
-            if board[point] == 'X':
+            if board[point] == problem_player:
                 result += getDiagonalPoints(point, inrow, moves)
             else:
                 result -= getDiagonalPoints(point, inrow, moves)
