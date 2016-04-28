@@ -9,7 +9,7 @@ def randomHeuristic(state):
     return randint(0, 100)
 
 
-def combinedHeuristic(state):
+def combinedHeuristic(state, problem_player):
     return horizontalHeuristic(state) + verticalHeuristic(state) \
            + diagonalHeuristic(state) + inverseDiagonalHeuristic(state)
 

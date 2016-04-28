@@ -7,6 +7,15 @@ game = ConnectFour()
 state = game.initial
 
 player = 'X'
+problem_player = 'X'
+
+print "Quien empieza?"
+print "1 --> maquina"
+print "2 --> humano"
+input = raw_input()
+if input == "2":
+    player = 'O'
+    problem_player = 'O'
 
 while True:
     print "Jugador a mover:", game.to_move(state)
@@ -26,7 +35,7 @@ while True:
         player = 'X'
     else:
         print "Thinking..."
-        move = alphabeta_search(state, game, eval_fn=combinedHeuristic)
+        move = alphabeta_search(state, game, eval_fn=combinedHeuristic, problem_player=problem_player)
 
         state = game.make_move(move, state)
         player = 'O'
