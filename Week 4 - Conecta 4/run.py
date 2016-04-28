@@ -9,13 +9,17 @@ state = game.initial
 player = 'X'
 problem_player = 'X'
 
-print "Quien empieza?"
-print "1 --> maquina"
-print "2 --> humano"
-input = raw_input()
-if input == "2":
-    player = 'O'
-    problem_player = 'O'
+while True:
+    print "Quien empieza?"
+    print "1 --> maquina"
+    print "2 --> humano"
+    input = raw_input()
+    if input == "2":
+        player = 'O'
+        problem_player = 'O'
+        break
+    elif input == "1":
+        break
 
 while True:
     print "Jugador a mover:", game.to_move(state)
