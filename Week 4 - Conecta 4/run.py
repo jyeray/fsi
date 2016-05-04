@@ -8,6 +8,7 @@ state = game.initial
 
 turn = 'maquina'
 problem_player = 'X'
+depth = 0
 
 while True:
     print "Quien empieza?"
@@ -19,6 +20,22 @@ while True:
         problem_player = 'O'
         break
     elif input == "1":
+        break
+
+while True:
+    print "Selecciona la dificultad:"
+    print "1 --> facil"
+    print "2 --> medio"
+    print "3 --> dificil"
+    difficulty = raw_input()
+    if difficulty == "1":
+        depth = 2
+        break
+    elif difficulty == "2":
+        depth = 3
+        break
+    elif difficulty == "3":
+        depth = 5
         break
 
 while True:
@@ -39,7 +56,7 @@ while True:
         turn = 'maquina'
     else:
         print "Thinking..."
-        move = alphabeta_search(state, game, eval_fn=combinedHeuristic, problem_player=problem_player)
+        move = alphabeta_search(state, game, eval_fn=combinedHeuristic, problem_player=problem_player, d=depth)
 
         state = game.make_move(move, state)
         turn = 'humano'
