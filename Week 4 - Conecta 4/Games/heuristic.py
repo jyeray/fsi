@@ -19,7 +19,12 @@ def memoize(heuristic):
 def randomHeuristic(state):
     return randint(0, 100)
 
+
 @memoize
 def combinedHeuristic(state, problem_player):
-    return horizontalHeuristic(state, problem_player) + verticalHeuristic(state, problem_player) \
+    value = horizontalHeuristic(state, problem_player) + verticalHeuristic(state, problem_player) \
            + diagonalHeuristic(state, problem_player) + inverseDiagonalHeuristic(state, problem_player)
+    if value == float('inf'):
+        value = 100000000
+        value -= len(state.board.keys())
+    return value
