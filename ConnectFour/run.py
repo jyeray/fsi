@@ -1,7 +1,6 @@
 from AIMA.games import *
+from ConnectFour.Heuristic.Heuristic import *
 from Games.ConnectFour import ConnectFour
-
-from Games.heuristic import *
 
 game = ConnectFour()
 state = game.initial
@@ -56,7 +55,7 @@ while True:
         turn = 'maquina'
     else:
         print "Thinking..."
-        move = alphabeta_search(state, game, eval_fn=combinedHeuristic, problem_player=problem_player, d=depth)
+        move = alphabeta_search(state, game, eval_fn=combined_heuristic, problem_player=problem_player, d=depth)
 
         state = game.make_move(move, state)
         turn = 'humano'

@@ -1,27 +1,27 @@
-def inverseDiagonalHeuristic(state, problem_player):
+def inverse_diagonal_heuristic(state, problem_player):
     initial_points = {(1, 4), (1, 5), (1, 6), (2, 6), (3, 6), (4, 6)}
     result = 0
     for point in initial_points:
-        result += diagonalLineHeuristic(point, state.board, state.moves, problem_player)
+        result += diagonal_line_heuristic(point, state.board, state.moves, problem_player)
     return result
 
 
-def diagonalLineHeuristic(point, board, moves, problem_player):
+def diagonal_line_heuristic(point, board, moves, problem_player):
     result = 0
     while point in board or point in moves:
         if point in board:
-            inrow = diagonalCount(point, board)
+            in_row = diagonal_count(point, board)
             if board[point] == problem_player:
-                result += getDiagonalPoints(point, inrow, moves)
+                result += get_diagonal_points(point, in_row, moves)
             else:
-                result -= getDiagonalPoints(point, inrow, moves)
-            point = (point[0] + inrow, point[1] - inrow)
+                result -= get_diagonal_points(point, in_row, moves)
+            point = (point[0] + in_row, point[1] - in_row)
         else:
             point = (point[0] + 1, point[1] - 1)
     return result
 
 
-def diagonalCount(point, board):
+def diagonal_count(point, board):
     player = board[point]
     point = (point[0] + 1, point[1] - 1)
     count = 1
@@ -34,16 +34,16 @@ def diagonalCount(point, board):
     return count
 
 
-def getDiagonalPoints(point, inrow, moves):
+def get_diagonal_points(point, in_row, moves):
     multiplier = 0
-    if inrow == 1:
+    if in_row == 1:
         return 0
-    if inrow == 4:
+    if in_row == 4:
         return float('inf')
-    down_point = (point[0] + inrow, point[1] - inrow)
+    down_point = (point[0] + in_row, point[1] - in_row)
     up_point = (point[0] - 1, point[1] + 1)
     if up_point in moves:
         multiplier += 2
     if down_point in moves:
         multiplier += 2
-    return (inrow * multiplier) ** inrow
+    return (in_row * multiplier) ** in_row
