@@ -1,6 +1,9 @@
 from AIMA.games import *
 from ConnectFour.Heuristic.Heuristic import *
 from Games.ConnectFour import ConnectFour
+import time
+
+file_to_print = open("without_memoize.txt", 'w')
 
 game = ConnectFour()
 state = game.initial
@@ -55,12 +58,15 @@ while True:
         turn = 'machine'
     else:
         print "Thinking..."
+        start_time = time.time()
         move = alphabeta_search(state, game, eval_fn=combined_heuristic, problem_player=problem_player, d=depth)
-
+        final_time = time.time()
+        file_to_print.write(str(final_time - start_time) + "\n")
         state = game.make_move(move, state)
         turn = 'human'
     print "-------------------"
     if game.terminal_test(state):
         game.display(state)
         print "Final de la partida"
+        file_to_print.close()
         break
