@@ -5,17 +5,17 @@ from Games.ConnectFour import ConnectFour
 game = ConnectFour()
 state = game.initial
 
-turn = 'maquina'
+turn = 'machine'
 problem_player = 'X'
 depth = 0
 
 while True:
     print "Quien empieza?"
-    print "1 --> maquina"
-    print "2 --> humano"
+    print "1 --> Maquina"
+    print "2 --> Humano"
     input = raw_input()
     if input == "2":
-        turn = 'humano'
+        turn = 'human'
         problem_player = 'O'
         break
     elif input == "1":
@@ -23,9 +23,9 @@ while True:
 
 while True:
     print "Selecciona la dificultad:"
-    print "1 --> facil"
-    print "2 --> medio"
-    print "3 --> dificil"
+    print "1 --> Facil"
+    print "2 --> Medio"
+    print "3 --> Dificil"
     difficulty = raw_input()
     if difficulty == "1":
         depth = 2
@@ -34,14 +34,14 @@ while True:
         depth = 3
         break
     elif difficulty == "3":
-        depth = 5
+        depth = 4
         break
 
 while True:
     print "Jugador a mover:", game.to_move(state)
     game.display(state)
 
-    if turn == 'humano':
+    if turn == 'human':
         col_str = raw_input("Movimiento: ")
         coor = int(str(col_str).strip())
         x = coor
@@ -52,13 +52,13 @@ while True:
                 y = lm[1]
 
         state = game.make_move((x, y), state)
-        turn = 'maquina'
+        turn = 'machine'
     else:
         print "Thinking..."
         move = alphabeta_search(state, game, eval_fn=combined_heuristic, problem_player=problem_player, d=depth)
 
         state = game.make_move(move, state)
-        turn = 'humano'
+        turn = 'human'
     print "-------------------"
     if game.terminal_test(state):
         game.display(state)
