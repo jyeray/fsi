@@ -3,7 +3,7 @@ from ConnectFour.Heuristic.Heuristic import *
 from Games.ConnectFour import ConnectFour
 import time
 
-file_to_print = open("without_memoize.txt", 'w')
+file_to_print = open("with_memoize.txt", 'w')
 
 game = ConnectFour()
 state = game.initial
