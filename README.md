@@ -9,6 +9,15 @@ vertical_heuristic → solo en vertical
 diagonal_heuristic → diagonales desde posiciones de la parte inferior izquierda a la parte superior derecha
 
 inverse_diagonal_heuristic → diagonales desde posiciones de la parte inferior derecha a la parte superior izquierda
+
+Apartados adicionales implementados
+------------------------
+Se permite elegir quién comienza jugando: el usuario o la máquina
+
+Se permite seleccionar el modo de dificultad en el juego: Fácil, Medio o Difícil
+
+Se añadió el patrón de diseño Memoize a fin de poder mejorar la velocidad de la búsqueda.
+
 Comparación de tiempos
 ----------------------------------
 La partida y el código que se utilizo para capturar los tiempos se puede ver en el branch "compare_memoize_times"
